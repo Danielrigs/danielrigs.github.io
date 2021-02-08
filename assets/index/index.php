@@ -3,6 +3,7 @@
     session_start();
     require("../PHP/connect.php");
     require("../PHP/functions.php");
+
     ?>
 <!DOCTYPE html>
 <html lang="hu">
@@ -73,6 +74,7 @@
     <div class="small-container">
         <h2 class="title">Ajánlott termékek</h2>
         <div class="row">
+
         <?php 
         $get_product=get_product($conn,'latest',1);
         foreach($get_product as $list){
@@ -81,7 +83,7 @@
 
             <div class="col-4">
                 <img src="" alt="">
-                <h4><?php $list['product_title']?></h4>
+                <h4><?php echo $list['product_title']?></h4>
                     <div class="rating">
                     </div>
                     <p></p>

@@ -114,6 +114,7 @@ p{
 	padding: 10px;
 	min-width: 200px;
 	margin-bottom: 50px;
+	color: whitesmoke;
 }
 .col-4 img{
 	width: 100%;
@@ -127,7 +128,7 @@ p{
 }
 .title::after{
 	content: '';
-	/*background: ;*/
+	background: rgb(158, 10, 10);
 	width:80px;
 	height:5px;
 	border-radius: 5px;
@@ -136,4 +137,12 @@ p{
 	left: 50%;
 	transform: translateX(-50%);
 
+}
+h4{
+	color: whitesmoke;
+	font-weight: normal;
+
+}
+.col-4 p{
+	 font-size: 14px;
 }
