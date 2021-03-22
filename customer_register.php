@@ -14,7 +14,7 @@
     <title>RockWebshop</title>
     
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css v=1.0.0">
+    <link rel="stylesheet" href="css/style.css v=1.0.5">
    
    
     
@@ -57,6 +57,7 @@
                             </ul>
 
                             <ul class="nav navbar-nav navbar-right">
+                            <li><a href="cart.php"><span class="glyphicon glyphicon-th-list"></span> Kosár</a></li>
                                 <li><a href="customer/my_account.php"><span class="glyphicon glyphicon-user"></span> Profilom</a></li>
                                 <li><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-log-in"></span> Bejelentkezés/Regisztráció <span class="caret"></span></a>
                                     <ul class="dropdown-menu">
@@ -87,17 +88,9 @@
                
            </div><!-- col-md-12 Finish -->
            
-           <div class="col-md-3"><!-- col-md-3 Begin -->
-   
-        <?php 
-            
-            include("includes/sidebar.php");
-            
-            ?>
-               
-           </div><!-- col-md-3 Finish -->
            
-           <div class="col-md-9"><!-- col-md-9 Begin -->
+           
+           <div class="col-md-12" style="margin-top:20px;"><!-- col-md-9 Begin -->
                
                <div class="box"><!-- box Begin -->
                    
@@ -177,7 +170,7 @@
                            
                            <div class="text-center"><!-- text-center Begin -->
                                
-                               <button type="submit" name="register" class="btn btn-primary">
+                               <button type="submit" name="register" class="btn btn-red">
                                
                                <i class="fa fa-user-md"></i> Register
                                
@@ -202,8 +195,8 @@
     
     ?>
     
-    <script src="js/jquery-331.min.js"></script>
-    <script src="js/bootstrap-337.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     
     
 </body>

@@ -1,4 +1,13 @@
 <?php
+ 
+ $rating0="<i class='fa fa-star-o' aria-hidden='true'></i>
+           <i class='fa fa-star-o' aria-hidden='true'></i>
+           <i class='fa fa-star-o' aria-hidden='true'></i>
+           <i class='fa fa-star-o' aria-hidden='true'></i>
+           <i class='fa fa-star-o' aria-hidden='true'></i>";
+ 
+ 
+ 
  $rating1="<i class='fa fa-star' aria-hidden='true'></i>
            <i class='fa fa-star-o' aria-hidden='true'></i>
            <i class='fa fa-star-o' aria-hidden='true'></i>

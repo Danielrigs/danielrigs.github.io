@@ -20,11 +20,35 @@
             <div class="com-sm-6 col-md-3">
                 <h4>Top Kategóriák</h4>
                 <ul>
-                    <li><a href="#">Dzsekik</a></li>
-                    <li><a href="#">Kiegészítők</a></li>
-                    <li><a href="#">Kabátok</a></li>
-                    <li><a href="#">Cipők</a></li>
-                    <li><a href="#">Pólók</a></li>
+                <?php 
+                    
+                    $get_p_cats = "select * from product_categories";
+                
+                    $run_p_cats = mysqli_query($conn,$get_p_cats);
+                
+                    while($row_p_cats=mysqli_fetch_array($run_p_cats)){
+                        
+                        $p_cat_id = $row_p_cats['p_cat_id'];
+                        
+                        $p_cat_title = $row_p_cats['p_cat_title'];
+                        
+                        echo "
+                        
+                            <li>
+                            
+                                <a href='shop.php?p_cat=$p_cat_id'>
+                                
+                                    $p_cat_title
+                                
+                                </a>
+                            
+                            </li>
+                        
+                        ";
+                        
+                    }
+                
+                ?>
                 </ul>
                 <hr class="hidden-md hidden-lg">
             </div>
@@ -46,14 +70,54 @@
                 <p class="text-muted">
                     Ne hagyd ki a legújabb termékeinket.
                 </p>
-                <form action="" method="post">
+
+               
+
+
+                <form action=" " method="POST" >
                     <div class="input-group">
-                        <input type="text" class="form-control" name="xyz@gmail.com">
+                        <input type="text" class="form-control" name="email" id="email" placeholder="xyz@minta.com">
                         <span class="input-group-btn">
-                            <input type="submit" style="color:black;" value="Feliratkozás" class="btn">
+                            <button type="submit" name="subscribe" style="color:black;" value="Feliratkozás" class="btn">Feliratkozás</button>
                         </span>
                     </div>
+                    <?php 
+                $userEmail = ""; //first we leave email field blank
+                if(isset($_POST['subscribe'])){ //if subscribe btn clicked
+                 $userEmail = $_POST['email']; //getting user entered email
+                 if(filter_var($userEmail, FILTER_VALIDATE_EMAIL)){ //validating user email
+                 $subject = "Köszönjük hogy feliratkozott!";
+                 $message = "Thanks for subscribing to our blog. You'll always receive updates from us. And we won't share and sell your information.";
+                 $sender = "From: rockwebshopsubn@gmail.com";
+        //php function to send mail
+        if(mail($userEmail, $subject, $message, $sender)){
+          ?>
+           <!-- show sucess message once email send successfully -->
+          <div class="alert success-alert">
+            <?php echo "Thanks for Subscribing us." ?>
+          </div>
+          <?php
+          $userEmail = "";
+        }else{
+          ?>
+          <!-- show error message if somehow mail can't be sent -->
+          <div class="alert error-alert">
+          <?php echo "Failed while sending your mail!" ?>
+          </div>
+          <?php
+        }
+      }else{
+        ?>
+        <!-- show error message if user entered email is not valid -->
+        <div class="alert error-alert">
+          <?php echo "$userEmail is not a valid email address!" ?>
+        </div>
+        <?php
+      }
+    }
+    ?>
                 </form>
+
                 <hr>
                 <h4>Kövess minket</h4>
                 <p class="social">

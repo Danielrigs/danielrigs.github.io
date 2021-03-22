@@ -4,6 +4,7 @@
     require("PHP/connect.php");
     require("PHP/functions.php");
     require("PHP/rating.php");
+   
 
 
     ?>
@@ -15,7 +16,7 @@
     <title>RockWebshop</title>
     
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css v=1.0.0">
+    <link rel="stylesheet" href="css/style.css v=42.5.0">
    
     
     
@@ -60,6 +61,7 @@
                             </ul>
 
                             <ul class="nav navbar-nav navbar-right">
+                            <li><a href="cart.php"><span class="glyphicon glyphicon-th-list"></span> Kosár</a></li>
                                 <li><a href="customer/my_account.php"><span class="glyphicon glyphicon-user"></span> Profilom</a></li>
                                 <li><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-log-in"></span> Bejelentkezés/Regisztráció <span class="caret"></span></a>
                                     <ul class="dropdown-menu">
@@ -99,81 +101,177 @@
            </div><!-- col-md-3 Finish -->
            
            <div class="col-md-9"><!-- col-md-9 Begin -->
-               <div class="box"><!-- box Begin -->
-                   <h1>Shop</h1>
-                   <p>
-                       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo deleniti accusamus, consequuntur illum quasi ut. Voluptate a, ipsam repellendus ut fugiat minima? Id facilis itaque autem, officiis veritatis perferendis, quaerat!
-                   </p>
-               </div><!-- box Finish -->
+           <?php 
                
-               
-                   <div class="row">
-       <?php 
-        $get_product=get_product($conn,'latest',3);
-        foreach($get_product as $list){
-                    ?>
-           <div class="col-sm-4 col-sm-6 center-responsive">
-               <div class="product">
-                   <a href="details.php">
-                       <img class="img-responsive" src="admin_area/product_images/product-1.jpg" alt="Product 1">
-                   </a>
-                   <div class="text">
-                       <h3>
-                           <?php echo $list['product_title']?>
-                       </h3>
-                       <div class="rating">
-                            <?php
-                            switch ($list['product_rating']) {
-                                case 1:
-                                    echo $rating1;
-                                    break;
-                                case 2:
-                                    echo $rating2;
-                                    break;
-                                case 3:
-                                    echo $rating3;
-                                    break;
-                                case 4:
-                                    echo $rating4;
-                                    break;
-                                case 5:
-                                    echo $rating5;
-                                    break;
-                            }
-                            ?>
-                            </div>
-                       <p class="price"><?php echo $list['product_price']?> Ft</p>
-                       
-                   </div>
-               </div>
-           </div>
-           <?php } ?>
-       </div>
-   </div>
-               
-               
-                  <div class="page-btn">
-                       <span><a href="#"><<</a></span>
-                       <span><a href="#">1</a></span>
-                       <span><a href="#">2</a></span>
-                       <span><a href="#">3</a></span>
-                       <span><a href="#">4</a></span>
-                       <span><a href="#">5</a></span>
-                       <span><a href="#">>></a></span>
-                 </div>
-               
-               
-           </div><!-- col-md-9 Finish -->
-           
-       </div><!-- container Finish -->
-   </div><!-- #content Finish -->
-  
+                if(!isset($_GET['p_cat'])){
+                    
+                    if(!isset($_GET['cat'])){
+              
+                      echo "
 
-<!-------------Footer szekció----------------->
-<?php 
-            include("includes/footer.php");
+                       <div class='box'><!-- box Begin -->
+                           <h1>Shop</h1>
+                           <p>
+                               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo deleniti accusamus, consequuntur illum quasi ut. Voluptate a, ipsam repellendus ut fugiat minima? Id facilis itaque autem, officiis veritatis perferendis, quaerat!
+                           </p>
+                       </div><!-- box Finish -->
+
+                       ";
+                        
+                    }
+                   
+                   }
+               
+               ?>
+
+
+
+
+
+                <div class="row"><!-- row Begin -->
+               
+               <?php 
+               
+                    if(!isset($_GET['p_cat'])){
+                        
+                     if(!isset($_GET['cat'])){
+                        
+                        $per_page=6; 
+                         
+                        if(isset($_GET['page'])){
+                            
+                            $page = $_GET['page'];
+                            
+                        }else{
+                            
+                            $page=1;
+                            
+                        }
+                        
+                        $start_from = ($page-1) * $per_page;
+                         
+                        $get_products = "select * from products order by 1 DESC LIMIT $start_from,$per_page";
+                         
+                        $run_products = mysqli_query($conn,$get_products);
+                         
+                        while($row_products=mysqli_fetch_array($run_products)){
+                            
+                            $pro_id = $row_products['product_id'];
+        
+                            $pro_title = $row_products['product_title'];
+
+                            $pro_price = $row_products['product_price'];
+
+                            $pro_img1 = $row_products['product_img1'];
+
+                            //$pro_rating= $row_products['product_rating'];
+                            
+            echo "
             
-            ?>
+                <div class='col-md-4 col-sm-6 center-responsive'>
+        <center>
+            <div class='product'>
+            
+                <a href='details.php?pro_id=$pro_id'>
+                
+                    <img class='img-responsive' src='admin_area/product_images/$pro_img1'>
+                
+                </a>
+                
+                <div class='text'>
+                
+                    <h3>
+            
+                        
+
+                        <a href='details.php?pro_id=$pro_id'> $pro_title </a>
+
+                        
+                    
+                    </h3>
+
+                  
+                    <p class='price'>
+                    
+                         $pro_price  Ft
+                    
+                    </p>
+                    
+                    
+                
+                </div>
+            
+            </div>
+            </center>
+        
+        </div>
+            
+            ";
+                            
+                    }
+                    
+               ?>
+           
+           </div><!-- row Finish -->
+           
+
+           <div class="page-btn">    
+                 <?php
+                         
+                $query = "select * from products";
+                         
+                $result = mysqli_query($conn,$query);
+                         
+                $total_records = mysqli_num_rows($result);
+                         
+                $total_pages = ceil($total_records / $per_page);
+                         
+                    echo "
+                    <span><a href='shop.php?page=1'>".'<<'."</a></span>
+                       
+                    
+                    ";
+                         
+                    for($i=1; $i<=$total_pages; $i++){
+                        
+                          echo "
+                          <span><a href='shop.php?page=".$i."'>".$i."</a></span>
+                        
+                    ";  
+                        
+                    };
+                         
+                    echo "
+                         <span><a href='shop.php?page=$total_pages'>".'>>'."</a></span>
+                       
+                    
+                    ";
+                         
+                        }
+                        
+                    }
+                 
+                 ?> 
+                   
+                   </div>
+          
+            
+            <?php 
+            getpcatpro();
+            getcatpro();
+            
+            ?>  
+           
+       </div><!-- col-md-9 Finish -->
+       
+   </div><!-- container Finish -->
+</div><!-- #content Finish -->
+
+<?php 
+
+include("includes/footer.php");
+
+?>
 
 
     

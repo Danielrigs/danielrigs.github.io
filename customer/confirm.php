@@ -14,7 +14,7 @@
     <title>RockWebshop</title>
     
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/style.css v=1.0.0">
+    <link rel="stylesheet" href="../css/style.css v=1.0.5">
    
     
     
@@ -164,7 +164,7 @@
                        
                        <div class="text-center"><!-- text-center Begin -->
                            
-                           <button class="btn btn-primary btn-lg"><!-- tn btn-primary btn-lg Begin -->
+                           <button class="btn btn-red btn-lg"><!-- tn btn-primary btn-lg Begin -->
                                
                                <i class="fa fa-user-md"></i> Confirm Payment
                                
@@ -187,8 +187,8 @@
     
     ?>
     
-    <script src="js/jquery-331.min.js"></script>
-    <script src="js/bootstrap-337.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     
     
 </body>

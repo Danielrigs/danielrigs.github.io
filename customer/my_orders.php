@@ -71,7 +71,7 @@
                 
                 <td>
                     
-                    <a href="confirm.php" target="_blank" class="btn btn-secondary btn-sm"> Confirm Paid </a>
+                    <a href="confirm.php" target="_blank" class="btn btn-dark btn-sm"> Confirm Paid </a>
                     
                 </td>
                 

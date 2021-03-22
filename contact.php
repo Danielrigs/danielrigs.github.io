@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>RockWebshop</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css v=1.0.0">
+    <link rel="stylesheet" href="css/style.css v=1.0.4">
    
     
     
@@ -30,7 +30,7 @@
                     <div class="col-lg-12">
 
                         <div class="navbar-header">
-                            <button class="navbar-toggle" data-target="#mobile_menu" data-toggle="collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+                            <button class="navbar-toggle " data-target="#mobile_menu" data-toggle="collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
                             <a href="#" class="navbar-brand">RockWebshop</a>
                         </div>
 
@@ -56,6 +56,7 @@
                             </ul>
 
                             <ul class="nav navbar-nav navbar-right">
+                            <li><a href="cart.php"><span class="glyphicon glyphicon-th-list"></span> Kosár</a></li>
                                 <li><a href="customer/my_account.php"><span class="glyphicon glyphicon-user"></span> Profilom</a></li>
                                 <li><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-log-in"></span> Bejelentkezés/Regisztráció <span class="caret"></span></a>
                                     <ul class="dropdown-menu">
@@ -86,24 +87,20 @@
                
            </div><!-- col-md-12 Finish -->
            
-           <div class="col-md-3"><!-- col-md-3 Begin -->
-   
-   <?php 
-    
-    include("includes/sidebar.php");
-    
-    ?>
-               
-           </div><!-- col-md-3 Finish -->
            
-           <div class="col-md-9"><!-- col-md-9 Begin -->
+           
+           
+
+    
+           
+           <div class="col-md-12" style="margin-top:20px;"><!-- col-md-9 Begin -->
                
                <div class="box"><!-- box Begin -->
                    
                    <div class="box-header"><!-- box-header Begin -->
                        
-                       <center><!-- center Begin -->
-                           
+                      <!-- center Begin -->
+                      <center>
                            <h2> Feel free to Contact Us</h2>
                            
                            <p class="text-muted"><!-- text-muted Begin -->
@@ -149,8 +146,21 @@
                            </div><!-- form-group Finish -->
                            
                            <div class="text-center"><!-- text-center Begin -->
+                                <span id="spamprotirobotum" class="float-l" style="display: none;">
+                                <label>Spam védelem. Mennyi 2 *</label><br>
+                                <input type="text" name="robot" value="" id="protirobotum">
+                                <script>
+                                <!--
+                                        $("#protirobotum").val(Math.round(8.8)+'');
+                                        $("#spamprotirobotum").hide();
+                                //-->
+                                </script>
+                        </span>
+                        
+                        <div class="break"></div>
                                
-                               <button type="submit" name="submit" class="btn btn-primary">
+                               <button type="submit" name="submit" class="btn btn-red">
+                            
                                
                                <i class="fa fa-user-md"></i> Send Message
                                
@@ -159,6 +169,47 @@
                            </div><!-- text-center Finish -->
                            
                        </form><!-- form Finish -->
+
+
+
+                       <?php 
+                       
+                       if(isset($_POST['submit'])){
+                           
+                           /// Admin receives message with this ///
+                           
+                           $sender_name = $_POST['name'];
+                           
+                           $sender_email = $_POST['email'];
+                           
+                           $sender_subject = $_POST['subject'];
+                           
+                           $sender_message = $_POST['message'];
+                           
+                           $receiver_email = "rockwebshopsubn@gmail.com";
+                           
+                           mail($receiver_email,$sender_name,$sender_subject,$sender_message,$sender_email);
+                           
+                           /// Auto reply to sender with this ///
+                           
+                           $email = $_POST['email'];
+                           
+                           $subject = "RockWebshop";
+                           
+                           $msg = "Köszönjük hogy írt nekünk. Amint tudunk válaszolunk kérdésével kapcsolatban";
+                           
+                           $from = "rockwebshopsubn@gmail.com";
+                           
+                           mail($email,$subject,$msg,$from);
+                           
+                           echo "<h2 align='center'> Üzenetét sikeresen  elküldtük </h2>";
+                           
+                       }
+                       
+                       ?>
+                       
+
+
                        
                    </div><!-- box-header Finish -->
                    
@@ -175,8 +226,8 @@
     
     ?>
     
-    <script src="js/jquery-331.min.js"></script>
-    <script src="js/bootstrap-337.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     
     
 </body>
