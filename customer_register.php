@@ -1,78 +1,9 @@
-<?php
+<?php 
 
-    session_start();
-    require("PHP/connect.php");
-    require("PHP/functions.php");
-    require("PHP/rating.php");
-    ?>
+include("includes/header.php");
 
-<!DOCTYPE html>
-<html lang="hu">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>RockWebshop</title>
-    
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css v=1.0.5">
-   
-   
-    
-    
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-</head>
-<body>
-   
-    <div class="navbar navbar-inverse" id="navbar">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12">
+?>
 
-                        <div class="navbar-header">
-                            <button class="navbar-toggle" data-target="#mobile_menu" data-toggle="collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-                            <a href="#" class="navbar-brand">RockWebshop</a>
-                        </div>
-
-                        <div class="navbar-collapse collapse" id="mobile_menu">
-                            <ul class="nav navbar-nav">
-                            <li ><a href="index.php">Kezdőlap</a></li>
-                            <li ><a href="shop.php">Termékek</a></li>
-                                <li><a href="#">Rólunk</a></li>
-                                <li><a href="contact.php">Kapcsolat</a></li>
-                                
-                            </ul>
-                            <ul class="nav navbar-nav">
-                                <li>
-                                    <form action="" class="navbar-form">
-                                        <div class="form-group">
-                                            <div class="input-group">
-                                                <input type="search" name="search" id="" placeholder="Keresés" class="form-control">
-                                                <span class="input-group-addon" ><span style="color:black;" class="glyphicon glyphicon-search"></span></span>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </li>
-                            </ul>
-
-                            <ul class="nav navbar-nav navbar-right">
-                            <li><a href="cart.php"><span class="glyphicon glyphicon-th-list"></span> Kosár</a></li>
-                                <li><a href="customer/my_account.php"><span class="glyphicon glyphicon-user"></span> Profilom</a></li>
-                                <li><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-log-in"></span> Bejelentkezés/Regisztráció <span class="caret"></span></a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="#">Bejelentkezés</a></li>
-                                        <li><a href="customer_register.php">Regisztráció</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    
-   
    <div id="content"><!-- #content Begin -->
        <div class="container"><!-- container Begin -->
            <div class="col-md-12"><!-- col-md-12 Begin -->
@@ -92,13 +23,13 @@
            
            <div class="col-md-12" style="margin-top:20px;"><!-- col-md-9 Begin -->
                
-               <div class="box"><!-- box Begin -->
+           <div class="box"><!-- box Begin -->
                    
                    <div class="box-header"><!-- box-header Begin -->
                        
                        <center><!-- center Begin -->
                            
-                           <h2> Register a new account </h2>
+                           <h2> Regisztráljon </h2>
                            
                        </center><!-- center Finish -->
                        
@@ -106,7 +37,7 @@
                            
                            <div class="form-group"><!-- form-group Begin -->
                                
-                               <label>Your Name</label>
+                               <label>Néve</label>
                                
                                <input type="text" class="form-control" name="c_name" required>
                                
@@ -114,7 +45,7 @@
                            
                            <div class="form-group"><!-- form-group Begin -->
                                
-                               <label>Your Email</label>
+                               <label> Email címe </label>
                                
                                <input type="text" class="form-control" name="c_email" required>
                                
@@ -122,7 +53,7 @@
                            
                            <div class="form-group"><!-- form-group Begin -->
                                
-                               <label>Your Password</label>
+                               <label>Jelszó</label>
                                
                                <input type="password" class="form-control" name="c_pass" required>
                                
@@ -130,7 +61,7 @@
                            
                            <div class="form-group"><!-- form-group Begin -->
                                
-                               <label>Your Country</label>
+                               <label>Ország</label>
                                
                                <input type="text" class="form-control" name="c_country" required>
                                
@@ -138,7 +69,7 @@
                            
                            <div class="form-group"><!-- form-group Begin -->
                                
-                               <label>Your City</label>
+                               <label>Város</label>
                                
                                <input type="text" class="form-control" name="c_city" required>
                                
@@ -146,7 +77,7 @@
                            
                            <div class="form-group"><!-- form-group Begin -->
                                
-                               <label>Your Contact</label>
+                               <label>Elérhetősége(telefonszám)</label>
                                
                                <input type="text" class="form-control" name="c_contact" required>
                                
@@ -154,7 +85,7 @@
                            
                            <div class="form-group"><!-- form-group Begin -->
                                
-                               <label>Your Address</label>
+                               <label>Címe</label>
                                
                                <input type="text" class="form-control" name="c_address" required>
                                
@@ -162,7 +93,7 @@
                            
                            <div class="form-group"><!-- form-group Begin -->
                                
-                               <label>Your Profile Picture</label>
+                               <label>Profil képe</label>
                                
                                <input type="file" class="form-control form-height-custom" name="c_image" required>
                                
@@ -170,9 +101,9 @@
                            
                            <div class="text-center"><!-- text-center Begin -->
                                
-                               <button type="submit" name="register" class="btn btn-red">
+                               <button type="submit" name="register" class="btn btn-primary">
                                
-                               <i class="fa fa-user-md"></i> Register
+                               <i class="fa fa-user-md"></i> Regisztráció
                                
                                </button>
                                
@@ -195,9 +126,92 @@
     
     ?>
     
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     
     
 </body>
 </html>
+
+
+<?php 
+
+if(isset($_POST['register'])){
+    
+    $c_name = $_POST['c_name'];
+    
+    $c_email = $_POST['c_email'];
+    
+    $c_pass = $_POST['c_pass'];
+    
+    $c_country = $_POST['c_country'];
+    
+    $c_city = $_POST['c_city'];
+    
+    $c_contact = $_POST['c_contact'];
+    
+    $c_address = $_POST['c_address'];
+    
+    $c_image = $_FILES['c_image']['name'];
+    
+    $c_image_tmp = $_FILES['c_image']['tmp_name'];
+    
+    $c_ip = getRealIpUser();
+    
+    move_uploaded_file($c_image_tmp,"customer/customer_images/$c_image");
+    
+    $insert_customer = "insert into customers (customer_name,customer_email,customer_pass,customer_country,customer_city,customer_contact,customer_address,customer_image,customer_ip) values ('$c_name','$c_email','$c_pass','$c_country','$c_city','$c_contact','$c_address','$c_image','$c_ip')";
+    
+    $run_customer = mysqli_query($conn,$insert_customer);
+    
+    $sel_cart = "select * from cart where ip_add='$c_ip'";
+    
+    $run_cart = mysqli_query($conn,$sel_cart);
+    
+    $check_cart = mysqli_num_rows($run_cart);
+    
+    if($check_cart>0){
+        
+        /// If register have items in cart ///
+        
+        $_SESSION['customer_email']=$c_email;
+        
+        echo "<script>alert('Sikeresen regisztrált')</script>";
+        
+        echo "<script>window.open('checkout.php','_self')</script>";
+        
+    }else{
+        
+        /// If register without items in cart ///
+        
+        $_SESSION['customer_email']=$c_email;
+        
+        echo "<script>alert('Sikeresen regisztrált')</script>";
+        
+        echo "<script>window.open('index.php','_self')</script>";
+        
+    }
+    
+}
+
+?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

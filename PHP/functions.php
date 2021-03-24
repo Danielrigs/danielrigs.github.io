@@ -327,7 +327,6 @@ function getcatpro(){
         
             
             $pro_img1 = $row_products['product_img1'];
-            $pro_rating= $row_products['product_rating'];
             
             echo "
             

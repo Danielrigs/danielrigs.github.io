@@ -3,28 +3,85 @@
         <div class="row">
             <div class="col-sm-6 col-md-3">
                <h4>Oldalak</h4>
-                <ul>
+               <ul><!-- ul Begin -->
                     <li><a href="../cart.php">Kosár</a></li>
                     <li><a href="../contact.php">Kapcsolat</a></li>
                     <li><a href="../shop.php">Termékek</a></li>
-                    <li><a href="my_account.php">Fiókom</a></li>
-                </ul>
+                    <li><a href="my_account.php">Profilom</a></li>
+                </ul><!-- ul Finish -->
+                
                 <hr>
-                <h4>Adataim</h4>
-                <ul>
-                    <li><a href="../checkout.php">Bejelentkezés</a></li>
-                    <li><a href="customer_register.php">Regisztráció</a></li>
-                </ul>
+                
+                <h4>User Section</h4>
+                
+                <ul><!-- ul Begin -->
+                           
+                           <?php 
+                           
+                           if(!isset($_SESSION['customer_email'])){
+                               
+                               echo"<a href='../customer_login.php'>Bejelentkezés</a>";
+                               
+                           }else{
+                               
+                              echo"<a href='my_account.php?my_orders'>Profilom</a>"; 
+                               
+                           }
+                           
+                           ?>
+                    
+                    <li>
+                    
+                            <?php 
+                           
+                           if(!isset($_SESSION['customer_email'])){
+                               
+                            echo"<a href='../customer_register.php'>Regisztráció</a>";
+                               
+                           }else{
+                               
+                              echo"<a href='my_account.php?edit_account'>Profil szerkeztése</a>"; 
+                               
+                           }
+                           
+                           ?>
+                    
+                    </li>
+                </ul><!-- ul Finish -->
                 <hr class="hidden-md hidden-lg hidden-sm">
             </div>
             <div class="com-sm-6 col-md-3">
                 <h4>Top Kategóriák</h4>
                 <ul>
-                    <li><a href="#">Dzsekik</a></li>
-                    <li><a href="#">Kiegészítők</a></li>
-                    <li><a href="#">Kabátok</a></li>
-                    <li><a href="#">Cipők</a></li>
-                    <li><a href="#">Pólók</a></li>
+                <?php 
+                    
+                    $get_p_cats = "select * from product_categories";
+                
+                    $run_p_cats = mysqli_query($conn,$get_p_cats);
+                
+                    while($row_p_cats=mysqli_fetch_array($run_p_cats)){
+                        
+                        $p_cat_id = $row_p_cats['p_cat_id'];
+                        
+                        $p_cat_title = $row_p_cats['p_cat_title'];
+                        
+                        echo "
+                        
+                            <li>
+                            
+                                <a href='../shop.php?p_cat=$p_cat_id'>
+                                
+                                    $p_cat_title
+                                
+                                </a>
+                            
+                            </li>
+                        
+                        ";
+                        
+                    }
+                
+                ?>
                 </ul>
                 <hr class="hidden-md hidden-lg">
             </div>
@@ -38,7 +95,7 @@
                     <br/>therockwebshop@gmail.com
                     <br/><strong>Springmann Dániel</strong>
                 </p>
-                <a href="../contact.php">Lépj kapcsolatba velünk</a>
+                <a href="contact.php">Lépj kapcsolatba velünk</a>
                 <hr class="hidden-md hidden-lg">
             </div>
             <div class="col-sm-6 col-md-3">
@@ -46,14 +103,54 @@
                 <p class="text-muted">
                     Ne hagyd ki a legújabb termékeinket.
                 </p>
-                <form action="" method="post">
+
+               
+
+
+                <form action=" " method="POST" >
                     <div class="input-group">
-                        <input type="text" class="form-control" name="xyz@gmail.com">
+                        <input type="text" class="form-control" name="email" id="email" placeholder="xyz@minta.com">
                         <span class="input-group-btn">
-                            <input type="submit" value="Feliratkozás" class="btn btn-default">
+                            <button type="submit" name="subscribe" style="color:black;" value="Feliratkozás" class="btn">Feliratkozás</button>
                         </span>
                     </div>
+                    <?php 
+                $userEmail = ""; //first we leave email field blank
+                if(isset($_POST['subscribe'])){ //if subscribe btn clicked
+                 $userEmail = $_POST['email']; //getting user entered email
+                 if(filter_var($userEmail, FILTER_VALIDATE_EMAIL)){ //validating user email
+                 $subject = "Köszönjük hogy feliratkozott!";
+                 $message = "Thanks for subscribing to our blog. You'll always receive updates from us. And we won't share and sell your information.";
+                 $sender = "From: rockwebshopsubn@gmail.com";
+        //php function to send mail
+        if(mail($userEmail, $subject, $message, $sender)){
+          ?>
+           <!-- show sucess message once email send successfully -->
+          <div class="alert success-alert">
+            <?php echo "Köszönjük hogy feliratkozott" ?>
+          </div>
+          <?php
+          $userEmail = "";
+        }else{
+          ?>
+          <!-- show error message if somehow mail can't be sent -->
+          <div class="alert error-alert">
+          <?php echo "Sajnáljuk de hiba lépett fel,Próbálja ujra később" ?>
+          </div>
+          <?php
+        }
+      }else{
+        ?>
+        <!-- show error message if user entered email is not valid -->
+        <div class="alert error-alert">
+          <?php echo "$userEmail nem egy érvényes email cím !" ?>
+        </div>
+        <?php
+      }
+    }
+    ?>
                 </form>
+
                 <hr>
                 <h4>Kövess minket</h4>
                 <p class="social">

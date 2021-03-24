@@ -14,7 +14,7 @@
     <title>Termék hozzáadása</title>
     
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/style.css v=1.0.5">
+    <link rel="stylesheet" href="../css/style.css v=42.5.2">
    
     
     

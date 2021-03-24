@@ -1,15 +1,49 @@
 <?php
 
-session_start();
-if(!isset($_SESSION['customer_email'])){
-    
-    echo "<script>window.open('../checkout.php','_self')</script>";
-    
-}else{
-
-    
+    session_start();
     require("../PHP/connect.php");
     require("../PHP/functions.php");
+    require("../PHP/rating.php");
+
+
+    ?>
+
+<?php 
+
+if(isset($_GET['pro_id'])){
+    
+    $product_id = $_GET['pro_id'];
+    
+    $get_product = "select * from products where product_id='$product_id'";
+    
+    $run_product = mysqli_query($conn,$get_product);
+    
+    $row_product = mysqli_fetch_array($run_product);
+    
+    $p_cat_id = $row_product['p_cat_id'];
+    
+    $pro_title = $row_product['product_title'];
+    
+    $pro_price = $row_product['product_price'];
+    
+    $pro_desc = $row_product['product_desc'];
+    
+    $pro_img1 = $row_product['product_img1'];
+    
+    $pro_img2 = $row_product['product_img2'];
+    
+    $pro_img3 = $row_product['product_img3'];
+    
+    $get_p_cat = "select * from product_categories where p_cat_id='$p_cat_id'";
+    
+    $run_p_cat = mysqli_query($conn,$get_p_cat);
+    
+    $row_p_cat = mysqli_fetch_array($run_p_cat);
+    
+    $p_cat_title = $row_p_cat['p_cat_title'];
+    
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -106,94 +140,3 @@ if(!isset($_SESSION['customer_email'])){
                 </div>
             </div>
         </div>
-
-   
-   <div id="content"><!-- #content Begin -->
-       <div class="container"><!-- container Begin -->
-           <div class="col-md-12"><!-- col-md-12 Begin -->
-               
-               <ul class="breadcrumb"><!-- breadcrumb Begin -->
-                   <li>
-                       <a href="index.php">Kezdőlap</a>
-                   </li>
-                   <li>
-                       Profilom
-                   </li>
-               </ul><!-- breadcrumb Finish -->
-               
-           </div><!-- col-md-12 Finish -->
-           
-           <div class="col-md-3"><!-- col-md-3 Begin -->
-   
-           <?php 
-    
-    include("includes/sidebar.php");
-    
-    ?>
-               
-           </div><!-- col-md-3 Finish -->
-           
-           <div class="col-md-9"><!-- col-md-9 Begin -->
-               
-               <div class="box"><!-- box Begin -->
-                   
-                   <?php
-                   
-                   if (isset($_GET['my_orders'])){
-                       include("my_orders.php");
-                   }
-                   
-                   ?>
-                   
-                   <?php
-                   
-                   if (isset($_GET['pay_offline'])){
-                       include("pay_offline.php");
-                   }
-                   
-                   ?>
-                   
-                   <?php
-                   
-                   if (isset($_GET['edit_account'])){
-                       include("edit_account.php");
-                   }
-                   
-                   ?>
-                   
-                   <?php
-                   
-                   if (isset($_GET['change_pass'])){
-                       include("change_pass.php");
-                   }
-                   
-                   ?>
-                   
-                   <?php
-                   
-                   if (isset($_GET['delete_account'])){
-                       include("delete_account.php");
-                   }
-                   
-                   ?>
-                   
-               </div><!-- box Finish -->
-               
-           </div><!-- col-md-9 Finish -->
-           
-       </div><!-- container Finish -->
-   </div><!-- #content Finish -->
-   
-   <?php 
-    
-    include("includes/footer.php");
-    
-    ?>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    
-    
-</body>
-</html>
-<?php } ?>

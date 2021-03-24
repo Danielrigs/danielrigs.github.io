@@ -11,10 +11,40 @@
                 </ul>
                 <hr>
                 <h4>Adataim</h4>
-                <ul>
-                    <li><a href="checkout.php">Bejelentkezés</a></li>
-                    <li><a href="customer_register.php">Regisztráció</a></li>
-                </ul>
+                <ul><!-- ul Begin -->
+                           
+                           <?php 
+                           
+                           if(!isset($_SESSION['customer_email'])){
+                               
+                               echo"<a href='customer/customer_login.php.php'>Bejelentkezés</a>";
+                               
+                           }else{
+                               
+                              echo"<a href='customer/my_account.php?my_orders'>Profilom</a>"; 
+                               
+                           }
+                           
+                           ?>
+                    
+                    <li>
+                    
+                            <?php 
+                           
+                           if(!isset($_SESSION['customer_email'])){
+                               
+                               echo"<a href='customer_register.php'>Regisztráció</a>";
+                               
+                           }else{
+                               
+                              echo"<a href='my_account.php?edit_account'>Profil szerkeztése</a>"; 
+                               
+                           }
+                           
+                           ?>
+                    
+                    </li>
+                </ul><!-- ul Finish -->
                 <hr class="hidden-md hidden-lg hidden-sm">
             </div>
             <div class="com-sm-6 col-md-3">
@@ -94,7 +124,7 @@
           ?>
            <!-- show sucess message once email send successfully -->
           <div class="alert success-alert">
-            <?php echo "Thanks for Subscribing us." ?>
+            <?php echo "Köszönjük hogy feliratkozott" ?>
           </div>
           <?php
           $userEmail = "";
@@ -102,7 +132,7 @@
           ?>
           <!-- show error message if somehow mail can't be sent -->
           <div class="alert error-alert">
-          <?php echo "Failed while sending your mail!" ?>
+          <?php echo "Sajnáljuk de hiba lépett fel,Próbálja ujra később" ?>
           </div>
           <?php
         }
@@ -110,7 +140,7 @@
         ?>
         <!-- show error message if user entered email is not valid -->
         <div class="alert error-alert">
-          <?php echo "$userEmail is not a valid email address!" ?>
+          <?php echo "$userEmail nem egy érvényes email cím !" ?>
         </div>
         <?php
       }

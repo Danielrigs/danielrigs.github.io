@@ -23,7 +23,7 @@ a:hover{
 }
 
 
-/*-------------- Front Stílus--------------  */
+/*------------------------------------------Front Stílus------------------------------------------*/
 
 
 
@@ -53,7 +53,7 @@ img.headerpic{
 
 
 
-/* -------------- 3pic Stílus--------------  */
+/*------------------------------------------3pic Stílus------------------------------------------  */
 
 
 #advantages{
@@ -80,7 +80,7 @@ img.headerpic{
 
 
 
-/* -------------- About Us Styles--------------  */
+/*------------------------------------------About Us Styles------------------------------------------*/
 
 #about .row{
 	display: flex;
@@ -113,7 +113,7 @@ img.headerpic{
 }
 
 
-/*------------ Latest Products Styles------------- */
+/*------------------------------------------Latest Products Styles------------------------------------------*/
 
 
 #content{
@@ -176,9 +176,6 @@ img.headerpic{
 	transform: translateX(-50%);
 
 }
-#content .col-4:hover{
-	transform: translateY(-5px);
-}
 
 
 
@@ -186,9 +183,11 @@ img.headerpic{
 
 
 
-/*-------------------------footer----------------------------*/
+
+/*------------------------------------------footer------------------------------------------*/
 #footer{
 	background-image: linear-gradient(to bottom right,rgb(22, 22, 22), black);
+	padding:5rem;
 }
 
 #copyright{
@@ -233,7 +232,8 @@ img.headerpic{
 
 .page-btn{
 		align-items: center;
-		margin:0 auto 80px;;
+		margin:0 auto 80px;
+		float:right;
 
 }
 .page-btn span{
@@ -256,7 +256,7 @@ span:hover{
 
 
 
-/*  Products Categories & Categories Styles */
+/*------------------------------------------Products Categories & Categories Styles------------------------------------------*/
 #content .panel.sidebar-menu{
     box-sizing: border-box;
     box-shadow: 0px 1px 5px rgba(0, 0, 0, .5);
@@ -294,11 +294,164 @@ span:hover{
     
 }
 
+/*------------------------------------------Details.php Styles------------------------------------------*/
+
+
+#content #productMain{
+    margin-bottom: 30px;
+	
+}
+#content #productMain .price{
+    font-size: 30px;
+    font-weight: 300;
+    text-align: center;
+    
+}
+#content #mainImage{
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, .7);
+	width:80%;
+}
+#content #thumbs a{
+	margin-top:10px;
+    display: block;
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, .5);
+    border: 2px solid transparent;
+}
+#content .headline{
+    height: 305px;
+}
+#content box{
+	margin-top: 30px;
+}
+#productform{
+	margin-top:15rem;
+}
+
+#content .product-title{
+	text-align: center;
+	margin:0 auto 40px;
+	position: relative;
+	line-height: 60px;
+	color:whitesmoke;
+}
+#content .product-title::after{
+	content: '';
+	background: rgb(158, 10, 10);
+	width:80px;
+	height:5px;
+	border-radius: 5px;
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	transform: translateX(-50%);
+
+}
+.btn-red{
+	display:inline-block;
+	background: rgb(138, 1, 1);
+	color:whitesmoke;
+	padding: 8px 30px;
+	margin:30px 0;
+	border-radius:30px;
+}
+
+
+#content .title-hot{
+	text-align: center;
+	margin: 50px;
+	position: relative;
+	line-height: 60px;
+	color:whitesmoke;
+}
+#content .title-hot::after{
+	content: '';
+	background: rgb(158, 10, 10);
+	width:80px;
+	height:5px;
+	border-radius: 5px;
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	
+
+}
+#content #cart .table tbody tr td img{
+    width: 50px;
+}
+#content #cart .table tbody tr td input{
+    width: 40px;
+    text-align: right;
+}
+#content #cart .table tbody tr td{
+    vertical-align: middle;
+}
+#content #cart .table tfoot{
+    font-size: 18px;
+}
+.box .box-footer{
+    background-color: #000000;
+    margin: 30px -20px 20px;
+    padding: 20px;
+    border-top: 1px solid #eeeeee;
+}
+.box .box-footer:before,
+.box .box-footer:after{
+    content: "";
+    display: table;
+}
+.box .box-footer:after{
+    clear: both;
+}
+.box .box-header{
+    background-color: #000000;
+    margin: -20px -20px 20px;
+    padding: 20px;
+    border-top: 1px solid #eeeeee;
+}
+#content #order-summary table{
+    margin-top: 20px;
+}
+#content #order-summary table td{
+    color: #ffffff;
+}
+#content #order-summary table tr.total td,
+#content #order-summary table tr.total th{
+    font-size: 18px;
+    color: #ffffff;
+    font-weight: 700;
+}
+
+
+/*------------------------------------------cart.php------------------------------------------*/
+
+.btn-redsec{
+	display:inline-block;
+	background: rgb(24, 23, 23);
+	color:whitesmoke;
+	padding: 8px 30px;
+	margin:30px 0;
+	border-radius:30px;
+}
+.box .box-footer{
+    background-color: #000000;
+    margin: 30px -20px 20px;
+    padding: 20px;
+    border-top: 1px solid #eeeeee;
+}
+.box .box-footer:before,
+.box .box-footer:after{
+    content: "";
+    display: table;
+}
+.box .box-footer:after{
+    clear: both;
+}
+#order-summary{
+	margin-top:2.8rem;
+}
 
 
 /*------------------------------------------my_account.php------------------------------------------*/
-
-
 
 
 #selectedtr:hover{
@@ -313,6 +466,7 @@ span:hover{
     color: #fff;
     background-color: #2c0000;
 }
+
 
 
 
